@@ -8,7 +8,7 @@ const Card = ({ country }) => {
   return (
     <div className={darkMode ? "country-card-dark" : "country-card"}>
       <div className="country-preview">
-        { console.log("country::::", country)}
+        {console.log("country::::", country)}
         <Link
           to={`/singlecountry/${country.name.common}`}
           aria-label="country info"
@@ -23,14 +23,14 @@ const Card = ({ country }) => {
 
       <div className={darkMode ? "country-info-dark" : "country-info"}>
         <div className="country-detail">
-            <Link
-          to={`/singlecountry/${country.name.common}`}
-          aria-label="country info"
-        >
-          <div style={{ color: darkMode ? "white" : "black" }}>
-            <h2>{country.name.common}</h2>
-          </div>
-</Link>
+          <Link
+            to={`/singlecountry/${country.name.common}`}
+            aria-label="country info"
+          >
+            <div style={{ color: darkMode ? "white" : "black" }}>
+              <h2>{country.name.common}</h2>
+            </div>
+          </Link>
           <p>
             Population:{" "}
             <span>{country.population.toLocaleString("en-US")}</span>

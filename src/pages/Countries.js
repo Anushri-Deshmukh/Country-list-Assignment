@@ -11,13 +11,11 @@ const Countries = () => {
   const [error, setError] = useState(null);
 
   const getAllCountries = async () => {
-      setIsLoading(true);
-      setError(null);
+    setIsLoading(true);
+    setError(null);
     try {
       const res = await axios.get(`${apiURL}/all`);
 
-     
-    
       setCountries(res?.data);
     } catch (error) {
       setError(error.message);
@@ -30,33 +28,29 @@ const Countries = () => {
     setIsLoading(true);
     setError(null);
     try {
-    const res = await axios.get(`${apiURL}/name/${countryName}`);
+      const res = await axios.get(`${apiURL}/name/${countryName}`);
 
-   
-    setCountries(res.data);  
-  } catch (error) {
-   
-if (error.response && error.response.status === 404) {
-      setError("No country found with this name!");
-    } else {
-      setError(error.message);
-    }    
-  } finally {
+      setCountries(res.data);
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        setError("No country found with this name!");
+      } else {
+        setError(error.message);
+      }
+    } finally {
       setIsLoading(false);
     }
   };
 
   const getCountryByRegion = async (regionName) => {
-      setIsLoading(true);
-      setError(null);
+    setIsLoading(true);
+    setError(null);
     try {
       const res = await axios.get(`${apiURL}/region/${regionName}`);
 
-     
-
       setCountries(res.data);
     } catch (error) {
-       setError(error.message);
+      setError(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -67,28 +61,22 @@ if (error.response && error.response.status === 404) {
 
   return (
     <>
-          <main className="main-content">
-              
-             
-
-              
+      <main className="main-content">
         <SearchFilterCountry
           onSearch={getCountryByName}
           onSelect={getCountryByRegion}
-         getAllCountries={getAllCountries}
+          getAllCountries={getAllCountries}
         />
         {isLoading && !error && <h4>Loading........</h4>}
         {error && <h4>{error}</h4>}
-       
+
         {!error && !isLoading && countriess.length > 0 && (
-  <section className="cards-container">
-    {countriess.map((country, i) => (
-        <Card key={i} country={country} />
-        
-    ))}
-  </section>
-)}
-    
+          <section className="cards-container">
+            {countriess.map((country, i) => (
+              <Card key={i} country={country} />
+            ))}
+          </section>
+        )}
       </main>
     </>
   );

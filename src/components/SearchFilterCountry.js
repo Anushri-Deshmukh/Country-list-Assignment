@@ -1,9 +1,9 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../Context";
 
-const SearchFilterCountry = ({onSearch, onSelect, getAllCountries}) => {
+const SearchFilterCountry = ({ onSearch, onSelect, getAllCountries }) => {
   const { darkMode } = useContext(Context);
-    const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
 
   const option = [
     { value: "Africa" },
@@ -15,12 +15,12 @@ const SearchFilterCountry = ({onSearch, onSelect, getAllCountries}) => {
 
   const handleSearch = (e) => {
     let countryName = e.target.value;
-    setQuery(countryName);  // Update the query state
+    setQuery(countryName);
 
     if (countryName.trim() === "") {
-      getAllCountries();  // Fetch all countries if the search input is empty
+      getAllCountries();
     } else {
-      onSearch(countryName);  // Search by name otherwise
+      onSearch(countryName);
     }
   };
   return (
@@ -36,8 +36,8 @@ const SearchFilterCountry = ({onSearch, onSelect, getAllCountries}) => {
           className={darkMode ? "search-field-dark" : "search-field"}
           placeholder="Search for a country..."
           value={query}
-            onChange={(e) => handleSearch(e)}
-          />
+          onChange={(e) => handleSearch(e)}
+        />
       </div>
 
       <select

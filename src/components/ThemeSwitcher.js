@@ -27,12 +27,16 @@ const ThemeSwitcher = () => {
       onClick={handleTheme}
     >
       {darkMode ? (
-       <span><Brightness7Icon className="theme-icon" />
-         Light Mode</span> 
+        <span>
+          <Brightness7Icon className="theme-icon" />
+          Light Mode
+        </span>
       ) : (
-       <span><DarkModeOutlinedIcon className="theme-icon" />Dark Mode</span> 
+        <span>
+          <DarkModeOutlinedIcon className="theme-icon" />
+          Dark Mode
+        </span>
       )}
-     
     </button>
   );
 };
